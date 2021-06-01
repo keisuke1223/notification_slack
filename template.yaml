@@ -1,0 +1,32 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  notification_slack
+
+Globals:
+  Function:
+    Timeout: 5
+
+Resources:
+  BacklogToSlackFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      PackageType: Image
+      Events:
+        Schedule:
+          Type: Schedule
+          Properties:
+            Schedule: cron(0 0 ? * MON-FRI *)
+    Metadata:
+      DockerTag: go1.x-v1
+      DockerContext: ./
+      Dockerfile: Dockerfile
+
+
+Outputs:
+  BacklogToSlackFunction:
+    Description: "First Lambda Function ARN"
+    Value: !GetAtt BacklogToSlackFunction.Arn
+  BacklogToSlackFunctionIamRole:
+    Description: "Implicit IAM Role created for Backlog To Slack function"
+    Value: !GetAtt BacklogToSlackFunctionRole.Arn
