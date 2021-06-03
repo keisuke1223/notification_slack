@@ -77,7 +77,7 @@ func makeText(body []byte) (text string, err error) {
 	var issues []Issue
 	err = json.Unmarshal(body, &issues)
 	if err != nil {
-		return "", err
+		return "failed", err
 	}
 
 	if len(issues) == 0 {
