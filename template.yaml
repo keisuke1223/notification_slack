@@ -17,6 +17,16 @@ Resources:
           Type: Schedule
           Properties:
             Schedule: cron(0 0 ? * MON-FRI *)
+      Environment:
+        Variables:
+          BacklogApiKey:
+          BacklogProjectId:
+          BacklogGetIssuesUrl:
+          BacklogIssuePath:
+          SlackIncomingWebhooksUrl:
+          SlackChannelName:
+          SlackUserName:
+          SlackIconEmoji:
     Metadata:
       DockerTag: go1.x-v1
       DockerContext: ./
