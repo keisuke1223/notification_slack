@@ -1,4 +1,4 @@
-#Notification_slack
+# Notification_slack
 * backlog_to_slack
     * We will notify you at 9 am from Monday to Friday by slack of tickets created on the previous business day .
 * 
