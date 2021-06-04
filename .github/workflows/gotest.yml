@@ -1,0 +1,24 @@
+name: Run gotest
+
+on:
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: set up
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.16
+      - name: Get dependencies
+        run: go get -v -t -d ./...
+      - name: testing
+        run: |
+          go test -v ./backlog_to_slack/
